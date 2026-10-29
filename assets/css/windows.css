@@ -18,6 +18,8 @@
 .win.active .title .code{color:var(--accent)}
 .dots{display:flex; gap:5px; margin-right:8px}
 .dots span{width:8px; height:8px; border-radius:50%; background:#3A3A3E}
+.dots span:last-child{cursor:pointer}
+.dots span:last-child:hover{background:var(--alert)}
 .content{padding:16px 18px; font-size:14px}
 /* Horloge */
 .greet{
@@ -34,6 +36,18 @@
   text-transform:uppercase; margin-top:8px}
 .meta{font-family:'IBM Plex Mono',monospace; font-size:10px;
   color:var(--dim); letter-spacing:.08em; margin-top:14px}
+/* Meteo et Focus : valeurs en monospace */
+.temp{font-family:'IBM Plex Mono',monospace; font-size:38px; font-weight:600}
+.ftimer{font-family:'IBM Plex Mono',monospace; font-size:38px; font-weight:600}
+.wline{font-family:'IBM Plex Mono',monospace; font-size:11px;
+  color:var(--dim); line-height:2}
+.focus-actions{display:flex; gap:8px; margin-top:12px}
+.fbtn{
+  background:var(--chrome); border:1px solid var(--line);
+  color:var(--accent); font-family:'IBM Plex Mono',monospace;
+  font-size:11px; letter-spacing:.1em; padding:8px 12px; cursor:pointer;
+}
+.fbtn:hover{border-color:var(--accent)}
 /* Pense-bete */
 ul.tasks-list{list-style:none}
 ul.tasks-list li{
@@ -45,9 +59,10 @@ ul.tasks-list li:first-child{border-top:0}
 ul.tasks-list li.done{color:var(--dim); text-decoration:line-through}
 .del{margin-left:auto; color:var(--dim); font-family:'IBM Plex Mono',monospace}
 .del:hover{color:var(--alert)}
+/* Formulaires */
 .task-form{display:flex; gap:8px; margin-top:12px}
 .task-form input{
-  flex:1; background:var(--chrome); border:1px solid var(--line);
+  flex:1; min-width:0; background:var(--chrome); border:1px solid var(--line);
   color:var(--ink); font-family:'IBM Plex Mono',monospace;
   font-size:11px; padding:8px 10px; outline:none;
 }
@@ -58,13 +73,31 @@ ul.tasks-list li.done{color:var(--dim); text-decoration:line-through}
   font-size:14px; padding:0 12px; cursor:pointer;
 }
 .task-form button:hover{border-color:var(--accent)}
-/* Meteo */
-.temp{font-family:'IBM Plex Mono',monospace; font-size:38px; font-weight:600}
-.wline{font-family:'IBM Plex Mono',monospace; font-size:11px;
-  color:var(--dim); line-height:2}
 /* Depches */
 .dep{padding:9px 0; border-bottom:1px solid var(--line);
   font-size:13px; line-height:1.4}
 .dep:last-child{border-bottom:0}
 .dep .src{display:block; font-family:'IBM Plex Mono',monospace;
   font-size:9.5px; color:var(--dim); margin-top:2px; letter-spacing:.1em}
+/* Acces rapides */
+.link-grid{display:flex; flex-wrap:wrap; gap:8px}
+.link-grid a{
+  display:inline-block; border:1px solid var(--line);
+  background:var(--chrome); color:var(--ink);
+  font-family:'IBM Plex Mono',monospace; font-size:11px;
+  letter-spacing:.08em; padding:7px 10px; text-decoration:none;
+}
+.link-grid a:hover{border-color:var(--accent); color:var(--accent)}
+.link-item{display:flex; gap:6px; align-items:center}
+.link-del{color:var(--dim); cursor:pointer; font-size:11px}
+.link-del:hover{color:var(--alert)}
+/* Echeances */
+.evt{
+  display:flex; justify-content:space-between; gap:14px;
+  padding:9px 0; border-top:1px solid var(--line);
+  font-size:13px; align-items:baseline;
+}
+.evt:first-child{border-top:0}
+.evt .days{font-family:'IBM Plex Mono',monospace; color:var(--accent)}
+.evt .edel{color:var(--dim); cursor:pointer; font-size:11px}
+.evt .edel:hover{color:var(--alert)}

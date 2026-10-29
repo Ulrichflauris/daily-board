@@ -16,13 +16,13 @@ console de mission.
 |---|---|---|
 | Fond | #0B0B0C | bureau, arriere-plan |
 | Surface | #141416 | interieur des fenetres |
-| Chrome | #1C1C1F | barre de menus, barres de titre, barre d'etat |
+| Chrome | #1C1C1F | barre de menus, barres de titre, barre d'etat, menus |
 | Trait | #262628 | bordures, filets, separateurs |
 | Encre | #EDEAE2 | texte principal |
-| Secondaire | #8A8A8E | metadonnees, texte atténue |
-| Accent | #E8A33D | fenetre active, valeurs cles, curseur |
+| Secondaire | #8A8A8E | metadonnees, texte attenue |
+| Accent | #E8A33D | fenetre active, valeurs cles, curseur, compte a rebours |
 | Systeme | #7DD99B | etats OK, confirmations |
-| Alerte | #D4553F | erreurs, echecs |
+| Alerte | #D4553F | erreurs, echecs, fermeture |
 
 ## Typographie
 
@@ -34,10 +34,11 @@ console de mission.
 ## Structure
 
 - Barre de menus fixe en haut (36 px) : YC/OS, menus, horloge compacte
+- Menu Fenetre deroulant : ouverture et fermeture des widgets
 - Bureau plein ecran, grille de fond discrete (40 px), fenetres deplacables
-- Position et taille des fenetres sauvegardees par utilisateur
-- Barre d'etat fixe en bas (30 px) : SYS, localisation, compteurs, heure
-- Codes widgets : CLK-00, TSK-01, WTHR-02, INTL-03
+- Position et visibilite des fenetres sauvegardees par utilisateur
+- Barre d'etat fixe en bas (30 px) : SYS, position, compteurs, heure
+- Codes widgets : CLK-00, TSK-01, WTHR-02, INTL-03, FOC-04, LNK-05, EVT-06
 
 ## Mouvement
 
@@ -56,5 +57,6 @@ console de mission.
 
 ## Version
 
-1.0 - 29 octobre 2026. Toute modification du style passe par une mise a
-jour de ce document avant tout changement de code.
+1.1 - 29 octobre 2026. Ajout des codes FOC-04, LNK-05, EVT-06 et du menu
+Fenetre. Toute modification du style passe par une mise a jour de ce
+document avant tout changement de code.

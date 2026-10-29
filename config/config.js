@@ -12,8 +12,16 @@ var YCOS_CONFIG = {
     provider: "open-meteo",
     cacheMinutes: 30
   },
+  geo: {
+    enabled: true,
+    maxAgeHours: 12
+  },
   tasks: {
     provider: "local"
+  },
+  focus: {
+    minutes: 25,
+    breakMinutes: 5
   },
   news: {
     enabled: false,

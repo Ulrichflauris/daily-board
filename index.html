@@ -12,31 +12,49 @@
 </head>
 <body>
 <header class="menubar">
-  <span class="brand">YC/OS 1.0</span>
-  <span>Fichier</span><span>&Eacute;dition</span><span>Vue</span><span>Fen&ecirc;tre</span><span>Aide</span>
+  <span class="brand">YC/OS 1.1</span>
+  <span class="mitem">Fichier</span><span class="mitem">&Eacute;dition</span><span class="mitem">Vue</span>
+  <span class="menuwrap">
+    <span id="menu-windows-toggle">Fen&ecirc;tre</span>
+    <div id="window-menu" class="menu-drop"></div>
+  </span>
+  <span class="mitem">Aide</span>
   <span class="right" id="menubar-clock">&mdash;</span>
 </header>
 <main class="desktop" id="desktop">
-  <section class="win active" data-widget="clock" style="left:6%;top:10%">
+  <section class="win active" data-widget="clock" data-name="Horloge" style="left:6%;top:10%">
     <div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">CLK-00</span>Horloge</div>
     <div class="content"></div>
   </section>
-  <section class="win" data-widget="tasks" style="left:6%;top:52%">
+  <section class="win" data-widget="weather" data-name="Meteo" style="left:42%;top:8%">
+    <div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">WTHR-02</span>M&eacute;t&eacute;o — <span id="weather-label">Rennes</span></div>
+    <div class="content"></div>
+  </section>
+  <section class="win" data-widget="focus" data-name="Focus" style="left:70%;top:8%">
+    <div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">FOC-04</span>Focus</div>
+    <div class="content"></div>
+  </section>
+  <section class="win" data-widget="tasks" data-name="Pense-bete" style="left:6%;top:50%">
     <div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">TSK-01</span>Pense-b&ecirc;te</div>
     <div class="content"></div>
   </section>
-  <section class="win" data-widget="weather" style="left:47%;top:8%">
-    <div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">WTHR-02</span>M&eacute;t&eacute;o — Rennes</div>
+  <section class="win" data-widget="news" data-name="Depeches" style="left:42%;top:46%">
+    <div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">INTL-03</span>D&eacute;p&ecirc;ches — veille cyber</div>
     <div class="content"></div>
   </section>
-  <section class="win" data-widget="news" style="left:49%;top:44%">
-    <div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">INTL-03</span>D&eacute;p&ecirc;ches — veille cyber</div>
+  <section class="win" data-widget="links" data-name="Acces" style="left:70%;top:44%">
+    <div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">LNK-05</span>Acc&egrave;s rapides</div>
+    <div class="content"></div>
+  </section>
+  <section class="win" data-widget="events" data-name="Echeances" style="left:6%;top:76%">
+    <div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">EVT-06</span>&Eacute;ch&eacute;ances</div>
     <div class="content"></div>
   </section>
 </main>
 <footer class="statusbar">
-  <span>SYS <span class="ok">OK</span> — RENNES 48.11N / 1.67W</span>
+  <span id="status-loc">SYS <span class="ok">OK</span> — RENNES</span>
   <span id="status-tasks">TSK — ACTIVES</span>
+  <span id="status-focus">FOC — 0</span>
   <span id="status-session">SESSION — CET</span>
 </footer>
 <script src="config/config.js"></script>
@@ -47,5 +65,8 @@
 <script src="assets/js/widgets/tasks.js"></script>
 <script src="assets/js/widgets/weather.js"></script>
 <script src="assets/js/widgets/news.js"></script>
+<script src="assets/js/widgets/focus.js"></script>
+<script src="assets/js/widgets/links.js"></script>
+<script src="assets/js/widgets/events.js"></script>
 </body>
 </html>

@@ -1,8 +1,8 @@
 # daily-board
 
 Console personnelle : un tableau de bord du quotidien concu comme le systeme
-d'exploitation prive de son proprietaire — YC/OS. Pense-bete, meteo de Rennes,
-veille cyber, horloge de session.
+d'exploitation prive de son proprietaire — YC/OS. Pense-bete, meteo geolocalisee,
+veille cyber, focus, acces rapides, echeances.
 
 ## Demarrage
 
@@ -10,6 +10,9 @@ Ouvrir `index.html` dans un navigateur. Le site fonctionne aussi une fois
 deploye : dans les parametres du depot GitHub, activer Pages
 (Settings > Pages > Branch: main, dossier racine), puis consulter
 `https://ulrichflauris.github.io/daily-board/`.
+
+La geolocalisation exige HTTPS : elle fonctionne sur GitHub Pages et sur
+localhost, elle tombe sur le repli Rennes depuis un fichier local.
 
 ## Structure
 
@@ -23,15 +26,18 @@ choix de design : `design/README.md`.
 |---|---|---|
 | CLK-00 | Horloge temps reel, date, compteur de jour | Operationnel |
 | TSK-01 | Pense-bete, stockage local | Operationnel, Supabase au Sprint 3 |
-| WTHR-02 | Meteo Open-Meteo, cache 30 min | Operationnel, a valider en reel |
+| WTHR-02 | Meteo geolocalisee, Open-Meteo, cache 30 min | Operationnel, a valider en reel |
 | INTL-03 | Depeches veille cyber | Echantillon statique, flux au Sprint 4 |
+| FOC-04 | Minuteur de focus 25/5, cycles comptes | Operationnel |
+| LNK-05 | Acces rapides personnels | Operationnel |
+| EVT-06 | Echeances et compte a rebours | Operationnel |
 
 ## Feuille de route
 
 | Sprint | Contenu | Statut |
 |---|---|---|
 | 1 | Squelette, architecture, deploiement | Livre |
-| 2 | Validation meteo et ergonomie | En cours |
+| 2 | Geolocalisation, Focus, Acces, Echeances, menu Fenetre | Livre |
 | 3 | Compte Supabase, synchronisation | A venir |
 | 4 | Flux d'actualites, mobile | A venir |
 | 5 | Documentation, zip final | A venir |

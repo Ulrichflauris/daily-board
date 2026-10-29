@@ -1,10 +1,11 @@
 /* daily-board — socle : jetons, base, chrome
-   Charte graphique v1.0 — docs/charte-graphique.md */
+   Charte graphique v1.1 — docs/charte-graphique.md */
 :root{
   --bg:#0B0B0C; --surface:#141416; --chrome:#1C1C1F;
   --ink:#EDEAE2; --dim:#8A8A8E; --accent:#E8A33D;
   --ok:#7DD99B; --alert:#D4553F; --line:#262628;
   --shadow:rgba(0,0,0,.55);
+  color-scheme:dark;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%}
@@ -22,6 +23,21 @@ body{
 }
 .menubar .brand{color:var(--accent); font-weight:600}
 .menubar .right{margin-left:auto}
+/* Menu deroulant Fenetre */
+.menuwrap{position:relative; display:inline-flex}
+.menu-drop{
+  display:none; position:absolute; top:100%; left:0;
+  background:var(--chrome); border:1px solid var(--line);
+  min-width:190px; z-index:30;
+}
+.menu-item{
+  display:flex; gap:10px; align-items:baseline;
+  font-family:'IBM Plex Mono',monospace; font-size:11px;
+  color:var(--ink); padding:9px 12px; cursor:pointer;
+  white-space:nowrap; letter-spacing:.06em;
+}
+.menu-item:hover{background:var(--surface)}
+.menu-item .box{color:var(--dim)}
 /* Bureau */
 .desktop{
   position:relative; height:100vh; padding-top:36px;
@@ -47,5 +63,5 @@ body{
     height:auto; min-height:100vh; padding:46px 12px 42px}
   .win{position:relative; left:auto !important; top:auto !important;
     width:100%; max-width:none}
-  .menubar span:nth-child(n+3):nth-child(-n+6){display:none}
+  .menubar .mitem{display:none}
 }

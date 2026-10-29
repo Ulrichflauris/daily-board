@@ -1,8 +1,10 @@
 /* Widget CLK-00 — horloge temps reel, date, compteur de jour */
 YCOS.register('clock', {
   render: function(el){
+    var hour = new Date().getHours();
+    var greet = (hour >= 18 || hour < 5) ? 'BONSOIR' : 'BONJOUR';
     el.innerHTML =
-      '<p class="greet">BONJOUR ' + YCOS.esc(YCOS_CONFIG.user.name) +
+      '<p class="greet">' + greet + ' ' + YCOS.esc(YCOS_CONFIG.user.name) +
       '<span class="cursor"></span></p>' +
       '<div class="time">--:--</div>' +
       '<div class="date"></div>' +
