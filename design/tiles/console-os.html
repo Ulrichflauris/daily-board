@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tile AC - Console YC/OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0C;--surface:#141416;--chrome:#1C1C1F;--ink:#EDEAE2;--dim:#8A8A8E;--accent:#E8A33D;--ok:#7DD99B;--line:#262628;--shadow:rgba(0,0,0,.55)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);font-family:'Space Grotesk',sans-serif;color:var(--ink);overflow:hidden}
+.menubar{position:fixed;top:0;left:0;right:0;height:36px;background:var(--chrome);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 16px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--dim);gap:24px;z-index:10}
+.brand{color:var(--accent);font-weight:600}
+.menubar .right{margin-left:auto}
+.desktop{position:relative;height:100vh;padding-top:36px;background-image:linear-gradient(rgba(237,234,226,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(237,234,226,.03) 1px,transparent 1px);background-size:40px 40px}
+.win{position:absolute;background:var(--surface);border:1px solid var(--line);box-shadow:7px 9px 0 var(--shadow);min-width:280px;max-width:400px;animation:pop .45s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.title{display:flex;align-items:center;background:var(--chrome);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;padding:8px 12px;cursor:grab;user-select:none;gap:10px;color:var(--dim)}
+.win.active{border-color:var(--accent)}
+.win.active .title .code{color:var(--accent)}
+.dots{display:flex;gap:5px;margin-right:8px}
+.dots span{width:8px;height:8px;border-radius:50%;background:#3A3A3E}
+.content{padding:16px 18px;font-size:14px}
+.greet{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:.14em;margin-bottom:10px}
+.cursor{display:inline-block;width:8px;height:13px;background:var(--accent);margin-left:4px;animation:blink 1.1s steps(1) infinite;vertical-align:baseline}
+@keyframes blink{50%{opacity:0}}
+.time{font-size:54px;font-weight:700;line-height:1}
+.date{font-size:12px;color:var(--dim);letter-spacing:.05em;text-transform:uppercase;margin-top:8px}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:.08em;margin-top:14px}
+ul{list-style:none}
+li{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:14px;align-items:baseline}
+li:first-child{border-top:0}
+.box{font-family:'IBM Plex Mono',monospace;color:var(--dim);flex-shrink:0}
+li.done{color:var(--dim);text-decoration:line-through}
+.temp{font-family:'IBM Plex Mono',monospace;font-size:38px;font-weight:600}
+.wline{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);line-height:2}
+.dep{padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.4}
+.dep:last-child{border-bottom:0}
+.dep .src{display:block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--dim);margin-top:2px;letter-spacing:.1em}
+.statusbar{position:fixed;bottom:0;left:0;right:0;height:30px;background:var(--chrome);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:.12em;z-index:10}
+.statusbar .ok{color:var(--ok)}
+.statusbar b{color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<div class="menubar">
+<span class="brand">YC/OS 1.0</span>
+<span>Fichier</span><span>&Eacute;dition</span><span>Vue</span><span>Fen&ecirc;tre</span><span>Aide</span>
+<span class="right">jeu. 29 oct. — 06:41</span>
+</div>
+<main class="desktop">
+<section class="win active" style="left:6%;top:10%;animation-delay:.1s">
+<div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">CLK-00</span>Horloge</div>
+<div class="content">
+<p class="greet">BONJOUR YESSIA<span class="cursor"></span></p>
+<div class="time">06:41</div>
+<div class="date">Jeudi 29 octobre</div>
+<p class="meta">JOUR 302 / 365 — D&Eacute;MARRAGE COMPL&Eacute;T&Eacute;</p>
+</div>
+</section>
+<section class="win" style="left:6%;top:52%;animation-delay:.3s">
+<div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">TSK-01</span>Pense-b&ecirc;te</div>
+<div class="content">
+<ul>
+<li><span class="box">[&nbsp;&nbsp;]</span>Valider l'inventaire serveurs du site</li>
+<li><span class="box">[&nbsp;&nbsp;]</span>Corriger le rapport d'audit, section AD</li>
+<li class="done"><span class="box">[x]</span>Relire la note de synth&egrave;se NIS2</li>
+</ul>
+</div>
+</section>
+<section class="win" style="left:47%;top:8%;animation-delay:.2s">
+<div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">WTHR-02</span>M&eacute;t&eacute;o — Rennes</div>
+<div class="content">
+<div class="temp">11&deg;</div>
+<div class="wline">RESSSENTI 09&deg;<br>VENT ONO 18 KM/H<br>PLUIE 20&thinsp;% — &Eacute;claircies l'apr&egrave;s-midi</div>
+</div>
+</section>
+<section class="win" style="left:49%;top:44%;animation-delay:.4s">
+<div class="title"><div class="dots"><span></span><span></span><span></span></div><span class="code">INTL-03</span>D&eacute;p&ecirc;ches — veille cyber</div>
+<div class="content">
+<div class="dep">Faille critique corrig&eacute;e dans les passerelles VPN d'entreprise<span class="src">CERT-FR</span></div>
+<div class="dep">Le NIS2 entre en phase de contr&ocirc;le dans cinq &Eacute;tats membres<span class="src">R&Eacute;GULATION</span></div>
+<div class="dep">Cha&icirc;ne d'attaque identifi&eacute;e sur des routeurs domestiques<span class="src">RECHERCHE</span></div>
+<div class="dep">Ran&ccedil;ongiciel rem&eacute;di&eacute; en 72 heures : le retour d'exp&eacute;rience<span class="src">IR</span></div>
+</div>
+</section>
+</main>
+<div class="statusbar">
+<span>SYS <span class="ok">OK</span> — RENNES 48.11N / 1.67W</span>
+<span>TSK <b>2</b> ACTIVES — SESSION <b>06:41</b> CET</span>
+</div>
+<script>
+document.querySelectorAll('.win').forEach(function(w){
+  w.addEventListener('mousedown',function(){
+    document.querySelectorAll('.win').forEach(function(o){o.classList.remove('active')});
+    w.classList.add('active');
+  });
+  w.querySelector('.title').addEventListener('mousedown',function(e){
+    var sx=e.clientX-w.offsetLeft, sy=e.clientY-w.offsetTop;
+    function move(ev){ w.style.left=(ev.clientX-sx)+'px'; w.style.top=(ev.clientY-sy)+'px'; }
+    function up(){ document.removeEventListener('mousemove',move); document.removeEventListener('mouseup',up); }
+    document.addEventListener('mousemove',move); document.addEventListener('mouseup',up);
+    e.preventDefault();
+  });
+});
+</script>
+</body>
+</html>
