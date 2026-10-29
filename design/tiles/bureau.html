@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tile C - YC/OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--desk:#E3E0DA;--ink:#26241F;--accent:#2F7A4D;--paper:#F8F6F1;--shadow:rgba(38,36,31,.2)}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--desk);font-family:'Archivo',sans-serif;color:var(--ink);overflow:hidden}
+.bar{position:fixed;top:0;left:0;right:0;height:36px;background:var(--ink);color:#D9D4C8;display:flex;align-items:center;padding:0 16px;font-family:'IBM Plex Mono',monospace;font-size:12px;gap:24px;z-index:10}
+.brand{color:#7DD99B;font-weight:600}
+.bar .right{margin-left:auto;color:#B9B4A9}
+.desktop{position:relative;height:100vh;padding-top:36px}
+.win{position:absolute;background:var(--paper);border:1px solid #A9A49A;box-shadow:7px 9px 0 var(--shadow);min-width:290px;max-width:380px;animation:pop .4s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.title{display:flex;align-items:center;background:#4A4740;color:#E8E5E0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;padding:8px 12px;cursor:grab;user-select:none}
+.win.active .title{background:var(--accent)}
+.dots{display:flex;gap:5px;margin-right:10px}
+.dots span{width:9px;height:9px;border-radius:50%;background:#8A8478}
+.content{padding:16px 18px;font-size:14px}
+.note{background:#F3E9C8;border:1px solid #D8C894;padding:10px 12px;margin-bottom:10px;transform:rotate(-.6deg);font-size:13.5px;line-height:1.4}
+.note:nth-child(2){transform:rotate(.8deg)}
+.note.done{opacity:.55;text-decoration:line-through}
+.big{font-size:34px;font-weight:600;font-family:'IBM Plex Mono',monospace}
+.mono{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6E695F;line-height:2}
+.dep{padding:9px 0;border-bottom:1px solid #E0DBD0;font-size:13px;line-height:1.4}
+.dep:last-child{border-bottom:0}
+.dep .src{display:block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#8A8478;margin-top:2px;letter-spacing:.1em}
+.stamp{position:absolute;bottom:22px;right:26px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8A8478;letter-spacing:.15em}
+</style>
+</head>
+<body>
+<div class="bar">
+<span class="brand">YC/OS 1.0</span>
+<span>Fichier</span><span>&Eacute;dition</span><span>Vue</span><span>Fen&ecirc;tre</span><span>Aide</span>
+<span class="right">jeu. 29 oct. — 06:32</span>
+</div>
+<main class="desktop">
+<section class="win active" style="left:6%;top:14%">
+<div class="title"><div class="dots"><span></span><span></span><span></span></div>Pense-b&ecirc;te</div>
+<div class="content">
+<div class="note">Valider l'inventaire serveurs du site</div>
+<div class="note done">Relire la note de synth&egrave;se NIS2</div>
+<div class="note">Corriger le rapport d'audit — section Active Directory</div>
+<div class="note">S&eacute;ance upper body, 45 minutes</div>
+</div>
+</section>
+<section class="win" style="left:44%;top:9%">
+<div class="title"><div class="dots"><span></span><span></span><span></span></div>M&eacute;t&eacute;o — Rennes</div>
+<div class="content">
+<span class="big">11&deg;</span>
+<div class="mono">RESSSENTI 09&deg;<br>VENT ONO 18 KM/H<br>PLUIE 20&thinsp;% — &Eacute;claircies l'apr&egrave;s-midi</div>
+</div>
+</section>
+<section class="win" style="left:56%;top:47%">
+<div class="title"><div class="dots"><span></span><span></span><span></span></div>D&eacute;p&ecirc;ches — veille cyber</div>
+<div class="content">
+<div class="dep">Faille critique corrig&eacute;e dans les passerelles VPN d'entreprise<span class="src">CERT-FR</span></div>
+<div class="dep">Le NIS2 entre en phase de contr&ocirc;le dans cinq &Eacute;tats membres<span class="src">R&Eacute;GULATION</span></div>
+<div class="dep">Cha&icirc;ne d'attaque identifi&eacute;e sur des routeurs domestiques<span class="src">RECHERCHE</span></div>
+<div class="dep">Ran&ccedil;ongiciel rem&eacute;di&eacute; en 72 heures : le retour d'exp&eacute;rience<span class="src">IR</span></div>
+</div>
+</section>
+<p class="stamp">STATION PERSONNELLE — RENNES</p>
+</main>
+<script>
+document.querySelectorAll('.win').forEach(function(w){
+  w.addEventListener('mousedown',function(){
+    document.querySelectorAll('.win').forEach(function(o){o.classList.remove('active')});
+    w.classList.add('active');
+  });
+  w.querySelector('.title').addEventListener('mousedown',function(e){
+    var sx=e.clientX-w.offsetLeft, sy=e.clientY-w.offsetTop;
+    function move(ev){ w.style.left=(ev.clientX-sx)+'px'; w.style.top=(ev.clientY-sy)+'px'; }
+    function up(){ document.removeEventListener('mousemove',move); document.removeEventListener('mouseup',up); }
+    document.addEventListener('mousemove',move); document.addEventListener('mouseup',up);
+    e.preventDefault();
+  });
+});
+</script>
+</body>
+</html>

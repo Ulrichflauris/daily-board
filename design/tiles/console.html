@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tile A - Console de mission</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0C;--ink:#EDEAE2;--dim:#8A8A8E;--accent:#E8A33D;--line:#262628}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-serif;min-height:100vh;padding:26px 26px 78px}
+.wrap{max-width:1060px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px}
+h1{font-size:22px;font-weight:700;letter-spacing:.06em}
+.cursor{display:inline-block;width:10px;height:17px;background:var(--accent);margin-left:6px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:.08em}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.cell{border:1px solid var(--line);padding:16px 18px;opacity:0;transform:translateY(6px);animation:reveal .45s ease forwards}
+@keyframes reveal{to{opacity:1;transform:none}}
+.cell:nth-child(1){animation-delay:.15s}
+.cell:nth-child(2){animation-delay:.3s}
+.cell:nth-child(3){animation-delay:.45s}
+.cell:nth-child(4){animation-delay:.6s}
+.tag{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:.14em;display:flex;justify-content:space-between;margin-bottom:12px}
+.tag b{color:var(--accent);font-weight:600}
+.clock{grid-column:span 4;display:flex;flex-direction:column;justify-content:space-between;min-height:210px}
+.time{font-size:88px;font-weight:700;line-height:1;letter-spacing:-.01em}
+.date{font-size:14px;color:var(--dim);letter-spacing:.05em;text-transform:uppercase;margin-top:8px}
+.weather{grid-column:span 2}
+.temp{font-family:'IBM Plex Mono',monospace;font-size:42px;font-weight:600}
+.wline{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);line-height:2}
+.tasks{grid-column:span 3}
+ul{list-style:none}
+li{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:14px;align-items:baseline}
+li:first-child{border-top:0}
+.box{font-family:'IBM Plex Mono',monospace;color:var(--dim);flex-shrink:0}
+li.done{color:var(--dim);text-decoration:line-through}
+.news{grid-column:span 3}
+.story{padding:9px 0;border-top:1px solid var(--line);font-size:13.5px;line-height:1.45}
+.story:first-of-type{border-top:0}
+.src{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);display:block;margin-top:3px;letter-spacing:.1em}
+footer{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--dim);letter-spacing:.12em;padding:10px 26px;display:flex;justify-content:space-between;z-index:5}
+footer b{color:var(--accent);font-weight:600}
+@media(max-width:760px){.clock,.weather,.tasks,.news{grid-column:span 6}.time{font-size:62px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>BONJOUR YESSIA<span class="cursor"></span></h1>
+<span class="meta">S&Eacute;ANCE 2026-10-29 // RENNES, FR</span>
+</header>
+<div class="grid">
+<section class="cell clock">
+<div class="tag"><span>CLK-00</span><b>TEMPS R&Eacute;EL</b></div>
+<div>
+<div class="time">06:32</div>
+<div class="date">Jeudi 29 octobre</div>
+</div>
+<div class="meta">JOUR 302 / 365 — D&Eacute;MARRAGE COMPL&Eacute;T&Eacute;</div>
+</section>
+<section class="cell weather">
+<div class="tag"><span>WTHR-02</span><b>RENNES</b></div>
+<div class="temp">11&deg;</div>
+<div class="wline">RESSENTI 09&deg;<br>VENT ONO 18 KM/H<br>PLUIE 20&thinsp;%<br>&Eacute;claircies l'apr&egrave;s-midi</div>
+</section>
+<section class="cell tasks">
+<div class="tag"><span>TSK-01</span><b>3 ACTIVES</b></div>
+<ul>
+<li><span class="box">[&nbsp;&nbsp;]</span>Valider l'inventaire serveurs du site</li>
+<li><span class="box">[&nbsp;&nbsp;]</span>Corriger le rapport d'audit, section Active Directory</li>
+<li><span class="box">[&nbsp;&nbsp;]</span>S&eacute;ance upper body — 45 minutes</li>
+<li class="done"><span class="box">[x]</span>Relire la note de synth&egrave;se NIS2</li>
+</ul>
+</section>
+<section class="cell news">
+<div class="tag"><span>INTL-03</span><b>VEILLE CYBER</b></div>
+<div class="story">Faille critique corrig&eacute;e dans les passerelles VPN d'entreprise<span class="src">FLUX — CERT-FR</span></div>
+<div class="story">Le NIS2 entre en phase de contr&ocirc;le dans cinq &Eacute;tats membres<span class="src">FLUX — R&Eacute;GULATION</span></div>
+<div class="story">Cha&icirc;ne d'attaque identifi&eacute;e sur des routeurs domestiques<span class="src">FLUX — RECHERCHE</span></div>
+<div class="story">Retour d'exp&eacute;rience : rem&eacute;diation d'un ran&ccedil;ongiciel en 72 heures<span class="src">FLUX — IR</span></div>
+<div class="story">Mise &agrave; jour majeure du noyau Linux : 34 correctifs de s&eacute;curit&eacute;<span class="src">FLUX — SYST&Egrave;ME</span></div>
+</section>
+</div>
+</div>
+<footer>
+<span>SYS <b>OK</b> — RENNES 48.11N / 1.67W</span>
+<span>TSK <b>3</b> ACTIVES — <b>06:32</b> CET</span>
+</footer>
+</body>
+</html>

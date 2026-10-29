@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tile B - Journal de bord</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,400&family=Archivo:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4F0E8;--ink:#1A1817;--accent:#C7361F;--hair:#DAD3C4;--muted:#6E675B}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:'Archivo',sans-serif;padding:64px 24px;animation:fadein .8s ease}
+@keyframes fadein{from{opacity:0}}
+.page{max-width:680px;margin:0 auto}
+.masthead{text-align:center;border-bottom:2px solid var(--ink);padding-bottom:22px}
+.no{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:'Fraunces',serif;font-weight:600;font-size:44px;margin:10px 0 8px}
+.tagline{font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+.clock{font-family:'Fraunces',serif;font-weight:300;font-size:118px;line-height:1;text-align:center;margin:64px 0 10px}
+.datewords{text-align:center;font-family:'Fraunces',serif;font-style:italic;font-size:19px;color:var(--muted);margin-bottom:68px}
+.acte{margin-bottom:58px}
+.head{display:flex;align-items:baseline;gap:16px;border-top:1px solid var(--hair);padding-top:14px;margin-bottom:16px}
+.num{font-family:'Fraunces',serif;font-size:21px;color:var(--accent)}
+.acte h2{font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:500}
+.acte ul{list-style:none}
+.acte li{font-family:'Fraunces',serif;font-size:18px;line-height:1.4;padding:10px 0;border-bottom:1px solid var(--hair);display:flex;gap:14px}
+.acte li::before{content:"—";color:var(--accent)}
+.acte li.done{color:#A39C8E;text-decoration:line-through}
+.sky{font-family:'Fraunces',serif;font-size:19px;line-height:1.7}
+.sky b{color:var(--accent);font-weight:600;font-size:26px}
+.story{border-bottom:1px solid var(--hair);padding:14px 0;display:flex;justify-content:space-between;gap:28px;align-items:baseline}
+.story p{font-family:'Fraunces',serif;font-size:17px;line-height:1.4}
+.story .src{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.colophon{text-align:center;font-size:10px;color:var(--muted);letter-spacing:.22em;text-transform:uppercase;margin-top:76px;border-top:2px solid var(--ink);padding-top:18px}
+@media(max-width:600px){.clock{font-size:72px}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="masthead">
+<p class="no">&Eacute;dition du matin — N&deg;&thinsp;001</p>
+<h1>Journal de bord</h1>
+<p class="tagline">Yessia Cakpo-Chichi — Rennes</p>
+</header>
+<div class="clock">6&thinsp;h&thinsp;32</div>
+<p class="datewords">Jeudi vingt-neuf octobre</p>
+<section class="acte">
+<div class="head"><span class="num">01.</span><h2>Ce que je dois faire</h2></div>
+<ul>
+<li>Valider l'inventaire serveurs du site</li>
+<li>Corriger le rapport d'audit, section Active Directory</li>
+<li>S&eacute;ance upper body, quarante-cinq minutes</li>
+<li class="done">Relire la note de synth&egrave;se NIS2</li>
+</ul>
+</section>
+<section class="acte">
+<div class="head"><span class="num">02.</span><h2>Le ciel sur Rennes</h2></div>
+<p class="sky"><b>Onze degr&eacute;s</b> au lever du jour, le vent d'ouest garde la ville fra&icirc;che. Les nuages se retireront apr&egrave;s midi, la pluie reste &agrave; distance, avec vingt pour cent d'audace.</p>
+</section>
+<section class="acte">
+<div class="head"><span class="num">03.</span><h2>&Agrave; lire ce matin</h2></div>
+<div class="story"><p>Faille critique corrig&eacute;e dans les passerelles VPN d'entreprise</p><span class="src">Cert-Fr</span></div>
+<div class="story"><p>Le NIS2 entre en phase de contr&ocirc;le dans cinq &Eacute;tats membres</p><span class="src">R&eacute;gulation</span></div>
+<div class="story"><p>Cha&icirc;ne d'attaque identifi&eacute;e sur des routeurs domestiques</p><span class="src">Recherche</span></div>
+<div class="story"><p>Retour d'exp&eacute;rience : rem&eacute;diation d'un ran&ccedil;ongiciel en 72 heures</p><span class="src">IR</span></div>
+<div class="story"><p>Mise &agrave; jour majeure du noyau Linux, 34 correctifs de s&eacute;curit&eacute;</p><span class="src">Syst&egrave;me</span></div>
+</section>
+<p class="colophon">Compos&eacute; &agrave; Rennes — Lu en moins de deux minutes</p>
+</div>
+</body>
+</html>
