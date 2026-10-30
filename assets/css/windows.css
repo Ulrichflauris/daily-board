@@ -41,6 +41,7 @@
 .ftimer{font-family:'IBM Plex Mono',monospace; font-size:38px; font-weight:600}
 .wline{font-family:'IBM Plex Mono',monospace; font-size:11px;
   color:var(--dim); line-height:2}
+.advice{color:var(--accent); margin-top:8px}
 .focus-actions{display:flex; gap:8px; margin-top:12px}
 .fbtn{
   background:var(--chrome); border:1px solid var(--line);
@@ -59,6 +60,8 @@ ul.tasks-list li:first-child{border-top:0}
 ul.tasks-list li.done{color:var(--dim); text-decoration:line-through}
 .del{margin-left:auto; color:var(--dim); font-family:'IBM Plex Mono',monospace}
 .del:hover{color:var(--alert)}
+.warn{color:var(--alert); font-family:'IBM Plex Mono',monospace;
+  font-size:10px; flex-shrink:0}
 /* Formulaires */
 .task-form{display:flex; gap:8px; margin-top:12px}
 .task-form input{
@@ -77,6 +80,8 @@ ul.tasks-list li.done{color:var(--dim); text-decoration:line-through}
 .dep{padding:9px 0; border-bottom:1px solid var(--line);
   font-size:13px; line-height:1.4}
 .dep:last-child{border-bottom:0}
+.dep a{color:var(--ink); text-decoration:none}
+.dep a:hover{color:var(--accent)}
 .dep .src{display:block; font-family:'IBM Plex Mono',monospace;
   font-size:9.5px; color:var(--dim); margin-top:2px; letter-spacing:.1em}
 /* Acces rapides */

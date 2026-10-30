@@ -17,15 +17,18 @@ var YCOS_CONFIG = {
     maxAgeHours: 12
   },
   tasks: {
-    provider: "local"
+    provider: "local",
+    staleDays: 3
   },
   focus: {
     minutes: 25,
     breakMinutes: 5
   },
   news: {
-    enabled: false,
-    items: []
+    enabled: true,
+    provider: "hacker-news",
+    cacheMinutes: 30,
+    count: 6
   },
   windows: {
     persist: true
